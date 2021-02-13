@@ -197,7 +197,7 @@ namespace ChatScan
                     {
                         iEnd = s.IndexOf("\"}]}", iChatMsg);
                         if (iEnd == -1)
-                            iEnd = s.IndexOf("\"},{\"emoji\"", iChatMsg);
+                            iEnd = s.IndexOf("\"},{\"", iChatMsg);
                         if (iEnd > -1)
                         {
                             sAuthor = "";
@@ -207,10 +207,11 @@ namespace ChatScan
                             {
                                 iAuthorEnd = sAuthorArea.IndexOf("\"},\"authorPhoto", iAuthor);
                                 if (iAuthorEnd > -1)
-                                    sAuthor = sAuthorArea.Substring(iAuthor, iAuthorEnd - iAuthor).Replace("\":{\"simpleText\":\"", "").Replace("\"authorName", "");
+                                    sAuthor = sAuthorArea.Substring(iAuthor, iAuthorEnd - iAuthor).Replace("\":{\"simpleText\":\"", "").Replace("\"authorName", "").Replace(@"\u0026", "&");
                             }
                             sChatMsg = s.Substring(iChatMsg, iEnd - iChatMsg).Replace("\"message\":{\"runs\":[{\"text\"", "").Replace(":\"","- ");
-                            sFinalText = sAuthor + " " + sChatMsg.Replace(@"\u0026", "&");
+                            sFinalText = sAuthor + " " + sChatMsg;
+                            sFinalText = sFinalText.Replace("text", " ").Replace("}", "").Replace("{", "").Replace(":", "").Replace("\"", "").Replace(@"\u0026", "&");
                             if (!lstChatText.Contains(sFinalText))
                             {
                                 lstChatText.Add(sFinalText);
@@ -226,7 +227,7 @@ namespace ChatScan
                                     lstChatters.Items.Add(u);
                                 lstChatters.EndUpdate();
                             }
-                            tabPage2.Text = "Chat - " + lstChatters.Items.Count + " people, " + iTotalMsgs + " messages";
+                            tabPage2.Text = "Chat - " + lstChatters.Items.Count + " people";
                         }
                         iCurrentPos = iEnd;
                     }
