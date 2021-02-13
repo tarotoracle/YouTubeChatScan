@@ -161,7 +161,8 @@ namespace ChatScan
                             {
                                 lstDonations.Add(sFinalText);
                                 ListBoxDonations.Items.Add(sFinalText);
-                                LogEntry(sFinalText);
+                                if (chkLog.Checked)
+                                    LogEntry(sFinalText);
                             }
                         }
                         iCurrentPos = iEnd;
@@ -210,8 +211,11 @@ namespace ChatScan
                             }
                             sChatMsg = s.Substring(iChatMsg, iEnd - iChatMsg).Replace("\"message\":{\"runs\":[{\"text\"", "").Replace(":\"","- ");
                             sFinalText = sAuthor + " " + sChatMsg.Replace(@"\u0026", "&");
-                            if (! lstChatText.Contains(sFinalText))
+                            if (!lstChatText.Contains(sFinalText))
+                            {
                                 lstChatText.Add(sFinalText);
+                                iTotalMsgs++;
+                            }
                             if (!lstChatPeople.Contains(sAuthor))
                             {
                                 lstChatPeople.Add(sAuthor);
@@ -222,7 +226,6 @@ namespace ChatScan
                                     lstChatters.Items.Add(u);
                                 lstChatters.EndUpdate();
                             }
-                            iTotalMsgs++;
                             tabPage2.Text = "Chat - " + lstChatters.Items.Count + " people, " + iTotalMsgs + " messages";
                         }
                         iCurrentPos = iEnd;
@@ -285,6 +288,10 @@ namespace ChatScan
             }
             else
             {
+                lstChatText.Clear();
+                ListBoxChatText.Items.Clear();
+                lstChatters.Items.Clear();
+                tabPage2.Text = "Chat";
                 timer1.Enabled = true;
                 button1.Text = "STOP";
             }
