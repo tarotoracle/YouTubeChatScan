@@ -231,10 +231,24 @@ namespace ChatScan
                             sFinalText = sFinalText.Replace("text", " ").Replace("}", "").Replace("{", "").Replace(":", "").Replace("\"", "").Replace(@"\u0026", "&");
                             if (!lstChatText.Contains(sFinalText))
                             {
-                                lstChatText.Add(sFinalText);
+                                if (sFinalText.Contains("http"))
+                                {
+                                    int ire = sFinalText.IndexOf("http");
+                                    sFinalText = sFinalText.Substring(0, ire);
+                                }
+                                if (sFinalText.Contains("emojiId"))
+                                {
+                                    int iref = sFinalText.IndexOf("emojiId");
+                                    sFinalText = sFinalText.Substring(0, iref);
+                                }
+                                
+                                if (sFinalText.Length > 200)
+                                    sFinalText = sFinalText.Substring(0, 200);
+                                if (!sFinalText.Contains("StreamElements"))
+                                    lstChatText.Add(sFinalText);
                                 iTotalMsgs++;
                             }
-                            if (!lstChatPeople.Contains(sAuthor))
+                            if (!lstChatPeople.Contains(sAuthor) && !sAuthor.Contains("StreamElements"))
                             {
                                 lstChatPeople.Add(sAuthor);
                                 lstChatPeople.Sort();
