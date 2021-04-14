@@ -353,7 +353,11 @@ namespace ChatScan
                 {
                     iy = u.IndexOf(" - ");
                     if (iy > 0)
-                        ListBoxChatText.Items.Add(u.Substring(iy, u.Length - iy).Replace(" - ", ""));
+                    {
+                        ay = u.Substring(iy, u.Length - iy).Replace(" - ", "");
+                        if(!ListBoxChatText.Items.Contains(ay))
+                          ListBoxChatText.Items.Add(ay);
+                    }
 /*
                     try
                     {
