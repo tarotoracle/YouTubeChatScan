@@ -358,6 +358,7 @@ namespace ChatScan
                         if(!ListBoxChatText.Items.Contains(ay))
                           ListBoxChatText.Items.Add(ay);
                     }
+                        
 /*
                     try
                     {
@@ -389,6 +390,29 @@ namespace ChatScan
                 File.WriteAllText(txtOutputFile.Text, "(" + (ListBoxDonations.SelectedIndex + 1).ToString() + ") " + ListBoxDonations.GetItemText(ListBoxDonations.SelectedItem));
             else
                 File.WriteAllText(txtOutputFile.Text, ListBoxDonations.GetItemText(ListBoxDonations.SelectedItem));
+        }
+
+        private void ListBoxDonations_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 32)
+            {
+                ListBoxSaved.Items.Add(ListBoxDonations.SelectedItem.ToString());
+                tabPage3.Text = "Saved - " + ListBoxSaved.Items.Count;
+            }
+        }
+
+        private void ListBoxChatText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 32)
+            {
+                ListBoxSaved.Items.Add(lstChatters.GetItemText(lstChatters.SelectedItem) + " - " + ListBoxChatText.SelectedItem.ToString());
+                tabPage3.Text = "Saved - " + ListBoxSaved.Items.Count;
+            }
+        }
+
+        private void ListBoxDonations_MouseClick(object sender, MouseEventArgs e)
+        {
+            lblStatus1.Text = "";
         }
     }
 }

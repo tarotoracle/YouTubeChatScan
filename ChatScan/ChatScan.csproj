@@ -5,6 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <Version>1.1.1</Version>
+    <StartupObject>ChatScan.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

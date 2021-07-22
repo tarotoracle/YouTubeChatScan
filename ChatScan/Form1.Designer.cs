@@ -54,12 +54,15 @@ namespace ChatScan
             this.ListBoxChatText = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lstChatters = new System.Windows.Forms.ListBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ListBoxSaved = new System.Windows.Forms.ListBox();
             this.statusStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -231,6 +234,7 @@ namespace ChatScan
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 119);
             this.tabControl1.Name = "tabControl1";
@@ -259,7 +263,9 @@ namespace ChatScan
             this.ListBoxDonations.Name = "ListBoxDonations";
             this.ListBoxDonations.Size = new System.Drawing.Size(817, 521);
             this.ListBoxDonations.TabIndex = 14;
+            this.ListBoxDonations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListBoxDonations_MouseClick);
             this.ListBoxDonations.SelectedIndexChanged += new System.EventHandler(this.ListBoxDonations_SelectedIndexChanged_1);
+            this.ListBoxDonations.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ListBoxDonations_KeyPress);
             // 
             // tabPage2
             // 
@@ -283,6 +289,7 @@ namespace ChatScan
             this.ListBoxChatText.Size = new System.Drawing.Size(677, 525);
             this.ListBoxChatText.TabIndex = 1;
             this.ListBoxChatText.SelectedIndexChanged += new System.EventHandler(this.ListBoxChatText_SelectedIndexChanged);
+            this.ListBoxChatText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ListBoxChatText_KeyPress);
             // 
             // panel1
             // 
@@ -304,6 +311,27 @@ namespace ChatScan
             this.lstChatters.TabIndex = 0;
             this.lstChatters.SelectedIndexChanged += new System.EventHandler(this.lstChatters_SelectedIndexChanged);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.ListBoxSaved);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(827, 531);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Saved";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // ListBoxSaved
+            // 
+            this.ListBoxSaved.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListBoxSaved.FormattingEnabled = true;
+            this.ListBoxSaved.ItemHeight = 15;
+            this.ListBoxSaved.Location = new System.Drawing.Point(3, 3);
+            this.ListBoxSaved.Name = "ListBoxSaved";
+            this.ListBoxSaved.Size = new System.Drawing.Size(821, 525);
+            this.ListBoxSaved.TabIndex = 15;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -314,7 +342,7 @@ namespace ChatScan
             this.Controls.Add(this.panel2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "YouTube SuperChatter v1.2 - by TarotOracle";
+            this.Text = "YouTube SuperChatter v1.25 - by TarotOracle";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -324,6 +352,7 @@ namespace ChatScan
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,6 +384,8 @@ namespace ChatScan
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkTrackDonos;
         private System.Windows.Forms.ListBox ListBoxChatText;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ListBox ListBoxSaved;
     }
 }
 
